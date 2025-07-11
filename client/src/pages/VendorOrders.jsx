@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { formatCurrency, formatDate, getOrderStatusColor } from '../utils/formatters';
-import { CheckCircleIcon, TruckIcon, PackageIcon, ClockIcon } from '@heroicons/react/24/outline';
+import { CheckCircleIcon, TruckIcon, CubeIcon, ClockIcon } from '@heroicons/react/24/outline';
 import api from '../utils/api';
 import toast from 'react-hot-toast';
 
