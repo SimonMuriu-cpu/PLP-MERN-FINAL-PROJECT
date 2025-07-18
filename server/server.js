@@ -14,6 +14,7 @@ const userRoutes = require('./routes/users');
 const productRoutes = require('./routes/products');
 const orderRoutes = require('./routes/orders');
 const vendorRoutes = require('./routes/vendor');
+const vendorsRoutes = require('./routes/vendors');
 const uploadRoutes = require('./routes/upload');
 
 // Import middleware
@@ -75,6 +76,7 @@ app.use('/api/users', userRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/vendor', vendorRoutes);
+app.use('/api/vendors', vendorsRoutes);
 app.use('/api/upload', uploadRoutes);
 
 // Health check endpoint

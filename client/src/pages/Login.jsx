@@ -28,7 +28,12 @@ const Login = () => {
       
       if (result.success) {
         toast.success('Login successful!');
-        navigate('/');
+        // Redirect based on user role
+        if (result.user.role === 'vendor') {
+          navigate('/vendor/dashboard');
+        } else {
+          navigate('/profile');
+        }
       } else {
         toast.error(result.error);
       }
