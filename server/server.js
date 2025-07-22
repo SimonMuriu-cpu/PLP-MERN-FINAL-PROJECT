@@ -51,7 +51,8 @@ app.use('/api/', limiter);
 
 const allowedOrigins = [
   "http://localhost:5173", // Local development
-  "https://plp-mern-final-project.vercel.app" // Production deployment
+  "https://plp-mern-final-project.vercel.app", // Production deployment
+  "https://plp-mern-final-project.onrender.com"
 ]
 
 // CORS configuration
