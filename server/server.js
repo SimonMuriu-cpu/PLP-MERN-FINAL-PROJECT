@@ -5,7 +5,7 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
 const { createServer } = require('http');
-const { Server } = require('socket.io');
+const path = require('path');
 require('dotenv').config();
 console.log("Loaded .env:", process.env.JWT_SECRET);
 
@@ -106,6 +106,14 @@ io.on('connection', (socket) => {
 
 // Error handling middleware
 app.use(errorHandler);
+
+// Serve static frontend (React)
+app.use(express.static(path.join(__dirname, '../client/dist')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+});
+
 
 // 404 handler
 app.use('*', (req, res) => {
