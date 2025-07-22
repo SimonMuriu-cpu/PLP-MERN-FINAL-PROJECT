@@ -48,10 +48,26 @@ const limiter = rateLimit({
 });
 app.use('/api/', limiter);
 
+
+const allowedOrigins = [
+  "http://localhost:5173", // Local development
+  "https://plp-mern-final-project.vercel.app" // Production deployment
+]
+
 // CORS configuration
 app.use(cors({
-  origin: process.env.CLIENT_URL || "http://localhost:5173",
-  credentials: true
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      return callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 // Body parsing middleware
